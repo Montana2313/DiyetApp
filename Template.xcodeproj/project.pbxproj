@@ -10,6 +10,7 @@
 		0435E7C0234FBAF60069306F /* Anasayfa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435E7BF234FBAF60069306F /* Anasayfa.swift */; };
 		0435E7C2234FCF220069306F /* AppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435E7C1234FCF220069306F /* AppBar.swift */; };
 		0435E7C4234FD04D0069306F /* Foods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435E7C3234FD04D0069306F /* Foods.swift */; };
+		0453729023550036000CDF61 /* GettingStarted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453728F23550036000CDF61 /* GettingStarted.swift */; };
 		0463F6EC23531E3F00667F47 /* FoodDataModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0463F6EB23531E3F00667F47 /* FoodDataModel.mlmodel */; };
 		04DE04402340C34200708D66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DE043F2340C34200708D66 /* AppDelegate.swift */; };
 		04DE04442340C34200708D66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DE04432340C34200708D66 /* ViewController.swift */; };
@@ -29,6 +30,7 @@
 		0435E7BF234FBAF60069306F /* Anasayfa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anasayfa.swift; sourceTree = "<group>"; };
 		0435E7C1234FCF220069306F /* AppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBar.swift; sourceTree = "<group>"; };
 		0435E7C3234FD04D0069306F /* Foods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foods.swift; sourceTree = "<group>"; };
+		0453728F23550036000CDF61 /* GettingStarted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStarted.swift; sourceTree = "<group>"; };
 		0463F6EB23531E3F00667F47 /* FoodDataModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FoodDataModel.mlmodel; sourceTree = "<group>"; };
 		04DE043C2340C34200708D66 /* DiyetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiyetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DE043F2340C34200708D66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				0435E7BF234FBAF60069306F /* Anasayfa.swift */,
 				0435E7C1234FCF220069306F /* AppBar.swift */,
 				0435E7C3234FD04D0069306F /* Foods.swift */,
+				0453728F23550036000CDF61 /* GettingStarted.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 				04DE045E2340D1E200708D66 /* Reachability.swift in Sources */,
 				04DE04442340C34200708D66 /* ViewController.swift in Sources */,
 				04DE04402340C34200708D66 /* AppDelegate.swift in Sources */,
+				0453729023550036000CDF61 /* GettingStarted.swift in Sources */,
 				0435E7C2234FCF220069306F /* AppBar.swift in Sources */,
 				0463F6EC23531E3F00667F47 /* FoodDataModel.mlmodel in Sources */,
 				04DE04582340C44C00708D66 /* Generals.swift in Sources */,

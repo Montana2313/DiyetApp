@@ -42,8 +42,15 @@ func getUserName()->String {
     }
     return ""
 }
+func gettotalCal()->Int {
+    return UserDefaults.standard.integer(forKey: "totalcal")
+}
 func setUserDefaultsString(withValue:String,forKey:String){
     UserDefaults.standard.setValue(withValue, forKey: forKey)
+    UserDefaults.standard.synchronize()
+}
+func setUserDefaultsInt(withValue:Int,forKey:String){
+    UserDefaults.standard.set(withValue, forKey: forKey)
     UserDefaults.standard.synchronize()
 }
 func removeUserDefaultString(forkey:String){
@@ -82,4 +89,15 @@ enum PhoneType {
     case iPhone8
     case iPhoneSE
     case Hata
+}
+enum Gender{
+    case Male
+    case Female
+}
+enum SportType{
+    case Lowest
+    case Low
+    case Middle
+    case High
+    case Highest
 }

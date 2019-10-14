@@ -84,7 +84,7 @@ extension Anasayfa:SetUpViews{
             return view
         }()
         self.calLabel = {
-            let label = DefaultItems.referance.defLabel(withText: "2000cal/3000cal", andLabelColor: .white)
+            let label = DefaultItems.referance.defLabel(withText: "2000cal/\(gettotalCal())", andLabelColor: .white)
             label.textAlignment = .center
             label.font = UIFont(name: "Helvetica", size: 25.0)
             return label
@@ -103,7 +103,7 @@ extension Anasayfa:SetUpViews{
         self.insideKaloriView.frame = CGRect(x: 0, y: 0, width: 20, height: self.middleKaloriView.frame.size.height)
         self.calLabel.frame = CGRect(x: 10, y: (self.middleView.frame.size.height / 2) + 10, width:self.middleView.frame.width - 20, height: 50)
         CustomizeItems.referance.roundedView25(with: self.middleView)
-        self.calcMiddView(totalCal: 3000, currentCal: 2000)
+        self.calcMiddView(totalCal: gettotalCal(), currentCal: 2000)
     }
     private func findBestfood(image : CIImage,process:@escaping(String,String,Bool)->Void){
         if  let model =  try? VNCoreMLModel(for: FoodDataModel().self.model){

@@ -92,7 +92,7 @@ class exView: UIView {
                 }else {
                     self.buttonforFirstItem.isEnabled = false
                     self.selectedItem = self.firstItem
-                    let button = DefaultItems.referance.defButton(withText:"Öğün olara ekle", andButtonColor: .green)
+                    let button = DefaultItems.referance.defButton(withText:"Öğün olara ekle", andButtonColor: cellColor)
                     button.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
                     button.isEnabled = true
                     return button

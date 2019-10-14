@@ -15,15 +15,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         window = UIWindow(frame: UIScreen.main.bounds)
-        let viewcontrollerFirst = Anasayfa()
+        var viewcontrollerFirst:UIViewController = GettingStarted()
         // EĞER USER kontrolü var ise
            if getUserName() == ""{
                 print("USERID YOK")
-//               viewcontrollerFirst = FirstScreen()
+               viewcontrollerFirst = GettingStarted()
            }else {
                print("USERID VAR")
                print(getUserName())
-//              viewcontrollerFirst = Anasayfa()
+            viewcontrollerFirst = Anasayfa()
            }
            
            let nav1 = UINavigationController()

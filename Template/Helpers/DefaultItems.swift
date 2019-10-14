@@ -25,6 +25,15 @@ class DefaultItems {
         button.backgroundColor = andButtonColor
         return button
     }
+    func defButtonWithLayer(text:String,andButtoncolor : UIColor,borderColor:UIColor,textColor:UIColor) -> UIButton{
+        let button = UIButton()
+        button.setTitle(text, for: .normal)
+        button.setTitleColor(textColor, for: .normal)
+        button.backgroundColor = andButtoncolor
+        button.layer.borderWidth = 1.0
+        button.layer.borderColor = borderColor.cgColor
+        return button
+    }
     func defButtonW(withImageName:String)->UIButton{
            let button = UIButton()
             button.setBackgroundImage(UIImage(named: withImageName), for: .normal)
