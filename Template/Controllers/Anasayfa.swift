@@ -27,9 +27,27 @@ class Anasayfa: AppBar {
         
         NotificationCenter.default.addObserver(self, selector: #selector(setterOfselectedValue(notification:)), name: NSNotification.Name(rawValue: "selected"), object: nil)
     }
+    override func viewWillAppear(_ animated: Bool) {
+        self.calLabel.text = "\(String(describing: getCurrentCal()!))cal/\(gettotalCal())cal"
+        self.foodArrays.removeAll(keepingCapacity: true)
+        if SetAndGetFiles.referance.getcurrentFoods() != nil{
+                  self.foodArrays = SetAndGetFiles.referance.getcurrentFoods()!
+                  self.tableView.reloadData()
+        }
+        self.calcMiddView(totalCal: gettotalCal(), currentCal: getCurrentCal()!)
+//        removeUserDefaultString(forkey: "userFoods")
+//        removeUserDefaultString(forkey: "currentCal")
+    }
     private func calcMiddView(totalCal:Int,currentCal:Int){
-        let percentage = (currentCal * 100) / totalCal
-        let percWith:Double = Double((Int(self.middleKaloriView.frame.size.width) * percentage) / 100)
+        var percentage = (currentCal * 100) / totalCal
+        var percWith:Double = 0.0
+        if currentCal > totalCal || currentCal == totalCal{
+             percentage = Int(100.0)
+             percWith = Double((Int(self.middleKaloriView.frame.size.width) * percentage) / 100)
+            self.present(createDefaultAlert(withTitle: "Bilgi", andDesc: "Günlük kaloriye ulaştınız.", andButtonTitle: "Tamam"),animated: true,completion: nil)
+        }else {
+             percWith = Double((Int(self.middleKaloriView.frame.size.width) * percentage) / 100)
+        }
         UIView.animate(withDuration: 1.0) {
             self.insideKaloriView.frame = CGRect(x: 0, y: 0, width: percWith, height: Double(self.middleKaloriView.frame.size.height))
         }
@@ -38,11 +56,43 @@ class Anasayfa: AppBar {
         guard let userInfo = notification.userInfo else{fatalError("veri gelmedi")}
         if let selected = userInfo["selected"] as? String {
             print(selected)
-            self.foodArrays.append(selected)
-            self.tableView.reloadData()
+            if SetAndGetFiles.referance.getobject(withName: selected) != nil{
+                let food = SetAndGetFiles.referance.getobject(withName: selected)
+                setuserFood(foodId: food!.id!) {
+                    setuserCal(cal: Int(food!.cal))
+                    self.calcMiddView(totalCal: gettotalCal(), currentCal: getCurrentCal()!)
+                    self.calLabel.text = "\(String(describing: getCurrentCal()!))cal/\(gettotalCal())cal"
+                    self.foodArrays.append(selected)
+                    self.tableView.reloadData()
+                }
+            }
             // buradaki alt view a ekleme yapıalacak
         }
     }
+    private func setuserFood(foodId:String,process:()->Void){
+         if getUserFoods() != nil{
+                var currentFoods = getUserFoods()
+                currentFoods!.append(foodId)
+                setUserDefaultsAny(any: currentFoods!, forkey: "userFoods") // id eklendi
+                print("Değer var ekleme başarılı")
+            }else {
+                var foodArray = [String]()
+                foodArray.append(foodId)
+                setUserDefaultsAny(any: foodArray, forkey: "userFoods")
+                print("Değer oluşturuldu ve ekleme başarılı")
+            }
+         
+         process()
+     }
+    private func setuserCal(cal:Int){
+             if getCurrentCal() != nil{
+                 var curretCall = getCurrentCal()!
+                 curretCall += cal
+                 setUserDefaultsInt(withValue:curretCall , forKey: "currentCal")
+             }else {
+                 setUserDefaultsInt(withValue: cal, forKey: "currentCal")
+             }
+     }
     @objc func takeAPhoto(){
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -84,7 +134,7 @@ extension Anasayfa:SetUpViews{
             return view
         }()
         self.calLabel = {
-            let label = DefaultItems.referance.defLabel(withText: "2000cal/\(gettotalCal())", andLabelColor: .white)
+            let label = DefaultItems.referance.defLabel(withText: "", andLabelColor: .white)
             label.textAlignment = .center
             label.font = UIFont(name: "Helvetica", size: 25.0)
             return label
@@ -103,7 +153,6 @@ extension Anasayfa:SetUpViews{
         self.insideKaloriView.frame = CGRect(x: 0, y: 0, width: 20, height: self.middleKaloriView.frame.size.height)
         self.calLabel.frame = CGRect(x: 10, y: (self.middleView.frame.size.height / 2) + 10, width:self.middleView.frame.width - 20, height: 50)
         CustomizeItems.referance.roundedView25(with: self.middleView)
-        self.calcMiddView(totalCal: gettotalCal(), currentCal: 2000)
     }
     private func findBestfood(image : CIImage,process:@escaping(String,String,Bool)->Void){
         if  let model =  try? VNCoreMLModel(for: FoodDataModel().self.model){

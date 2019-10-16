@@ -42,8 +42,27 @@ func getUserName()->String {
     }
     return ""
 }
+func getUserFoods()->[String]?{
+    if let foods = UserDefaults.standard.stringArray(forKey: "userFoods"){
+        return foods
+    }
+    return nil
+}
+func getSaveCurrentData()->String{
+    if let date = UserDefaults.standard.string(forKey: "saveDate"){
+        return date
+    }
+    return ""
+}
+func setUserDefaultsAny(any:Any,forkey:String){
+    UserDefaults.standard.setValue(any, forKey: forkey)
+    UserDefaults.standard.synchronize()
+}
 func gettotalCal()->Int {
     return UserDefaults.standard.integer(forKey: "totalcal")
+}
+func getCurrentCal()->Int?{
+    return UserDefaults.standard.integer(forKey: "currentCal")
 }
 func setUserDefaultsString(withValue:String,forKey:String){
     UserDefaults.standard.setValue(withValue, forKey: forKey)
@@ -62,6 +81,13 @@ func createDefaultAlert(withTitle:String , andDesc:String , andButtonTitle:Strin
     let actionButton = UIAlertAction(title: andButtonTitle, style: .cancel, handler: nil)
     alertController.addAction(actionButton)
     return alertController
+}
+func returnCurrentDate(){
+    let currentDate = Date()
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd/MM/yyyy"
+    print(dateFormatter.string(from: currentDate))
+    //Saate göre veri silmesi yapacak
 }
 //PROTOKOLLER
 protocol CreateView {

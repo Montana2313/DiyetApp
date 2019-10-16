@@ -17,5 +17,7 @@ class AppBar: UIViewController {
             return view
         }()
         self.view.addSubview(self.appBar)
+//        SetAndGetFiles.referance.setObject(foodName: "Beyaz Et", cal: 300.0)
+        returnCurrentDate()
     }
 }

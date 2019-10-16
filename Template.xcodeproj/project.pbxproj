@@ -10,8 +10,10 @@
 		0435E7C0234FBAF60069306F /* Anasayfa.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435E7BF234FBAF60069306F /* Anasayfa.swift */; };
 		0435E7C2234FCF220069306F /* AppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435E7C1234FCF220069306F /* AppBar.swift */; };
 		0435E7C4234FD04D0069306F /* Foods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0435E7C3234FD04D0069306F /* Foods.swift */; };
+		04435F5C2357C1950035C4E7 /* FoodDataModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 04435F5B2357C1950035C4E7 /* FoodDataModel.mlmodel */; };
 		0453729023550036000CDF61 /* GettingStarted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453728F23550036000CDF61 /* GettingStarted.swift */; };
-		0463F6EC23531E3F00667F47 /* FoodDataModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 0463F6EB23531E3F00667F47 /* FoodDataModel.mlmodel */; };
+		0470618A23566B1E002A6385 /* addFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470618923566B1E002A6385 /* addFoodCell.swift */; };
+		04781DB82357670F001B46F2 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04781DB62357670F001B46F2 /* DataModel.xcdatamodeld */; };
 		04DE04402340C34200708D66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DE043F2340C34200708D66 /* AppDelegate.swift */; };
 		04DE04442340C34200708D66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DE04432340C34200708D66 /* ViewController.swift */; };
 		04DE04492340C34400708D66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DE04482340C34400708D66 /* Assets.xcassets */; };
@@ -30,8 +32,10 @@
 		0435E7BF234FBAF60069306F /* Anasayfa.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Anasayfa.swift; sourceTree = "<group>"; };
 		0435E7C1234FCF220069306F /* AppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBar.swift; sourceTree = "<group>"; };
 		0435E7C3234FD04D0069306F /* Foods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Foods.swift; sourceTree = "<group>"; };
+		04435F5B2357C1950035C4E7 /* FoodDataModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FoodDataModel.mlmodel; sourceTree = "<group>"; };
 		0453728F23550036000CDF61 /* GettingStarted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStarted.swift; sourceTree = "<group>"; };
-		0463F6EB23531E3F00667F47 /* FoodDataModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = FoodDataModel.mlmodel; sourceTree = "<group>"; };
+		0470618923566B1E002A6385 /* addFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addFoodCell.swift; sourceTree = "<group>"; };
+		04781DB72357670F001B46F2 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		04DE043C2340C34200708D66 /* DiyetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiyetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DE043F2340C34200708D66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04DE04432340C34200708D66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -92,7 +96,7 @@
 				04DE04542340C40B00708D66 /* Models */,
 				04DE04532340C40400708D66 /* Controllers */,
 				04DE043F2340C34200708D66 /* AppDelegate.swift */,
-				0463F6EB23531E3F00667F47 /* FoodDataModel.mlmodel */,
+				04435F5B2357C1950035C4E7 /* FoodDataModel.mlmodel */,
 				04DE04482340C34400708D66 /* Assets.xcassets */,
 				04DE044A2340C34400708D66 /* LaunchScreen.storyboard */,
 				04DE044D2340C34400708D66 /* Info.plist */,
@@ -103,11 +107,11 @@
 		04DE04532340C40400708D66 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				0453728F23550036000CDF61 /* GettingStarted.swift */,
 				04DE04432340C34200708D66 /* ViewController.swift */,
 				0435E7BF234FBAF60069306F /* Anasayfa.swift */,
 				0435E7C1234FCF220069306F /* AppBar.swift */,
 				0435E7C3234FD04D0069306F /* Foods.swift */,
-				0453728F23550036000CDF61 /* GettingStarted.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -115,6 +119,7 @@
 		04DE04542340C40B00708D66 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				04781DB62357670F001B46F2 /* DataModel.xcdatamodeld */,
 				04DE045B2340C77E00708D66 /* SetAndGetFiles.swift */,
 				04DE04592340C6A100708D66 /* User.swift */,
 			);
@@ -124,6 +129,7 @@
 		04DE04552340C41500708D66 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				0470618923566B1E002A6385 /* addFoodCell.swift */,
 				04E1A6192341DCFC00C4B67A /* exCell.swift */,
 			);
 			path = Cells;
@@ -222,15 +228,17 @@
 				04E1A61A2341DCFC00C4B67A /* exCell.swift in Sources */,
 				04DE045E2340D1E200708D66 /* Reachability.swift in Sources */,
 				04DE04442340C34200708D66 /* ViewController.swift in Sources */,
+				04781DB82357670F001B46F2 /* DataModel.xcdatamodeld in Sources */,
 				04DE04402340C34200708D66 /* AppDelegate.swift in Sources */,
 				0453729023550036000CDF61 /* GettingStarted.swift in Sources */,
 				0435E7C2234FCF220069306F /* AppBar.swift in Sources */,
-				0463F6EC23531E3F00667F47 /* FoodDataModel.mlmodel in Sources */,
 				04DE04582340C44C00708D66 /* Generals.swift in Sources */,
 				04E1A6182341DBB400C4B67A /* CustomizeItems.swift in Sources */,
 				04DE04602340D23100708D66 /* DefaultItems.swift in Sources */,
 				04E1A61D2341DEA000C4B67A /* exView.swift in Sources */,
+				04435F5C2357C1950035C4E7 /* FoodDataModel.mlmodel in Sources */,
 				04DE045C2340C77E00708D66 /* SetAndGetFiles.swift in Sources */,
+				0470618A23566B1E002A6385 /* addFoodCell.swift in Sources */,
 				0435E7C4234FD04D0069306F /* Foods.swift in Sources */,
 				04DE045A2340C6A100708D66 /* User.swift in Sources */,
 			);
@@ -422,6 +430,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		04781DB62357670F001B46F2 /* DataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				04781DB72357670F001B46F2 /* DataModel.xcdatamodel */,
+			);
+			currentVersion = 04781DB72357670F001B46F2 /* DataModel.xcdatamodel */;
+			path = DataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 04DE04342340C34200708D66 /* Project object */;
 }

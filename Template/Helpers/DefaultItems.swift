@@ -80,6 +80,16 @@ class DefaultItems {
         view.frame = CGRect(x: 0, y: screenHeigth - 80, width: screenWith, height: 80)
         return view
     }
+    func defSearchBar(withPlaceHolder:String)->UISearchBar{
+        let searchBar = UISearchBar()
+        searchBar.searchBarStyle = UISearchBar.Style.minimal
+        searchBar.placeholder = withPlaceHolder
+        searchBar.backgroundColor = .clear
+        searchBar.sizeToFit()
+        searchBar.searchTextField.textColor = .black
+        searchBar.isTranslucent = false
+        return searchBar
+    }
     func defLeftButtonMenu(withimageNamed:String,orColor:UIColor?,andText:String)->UIButton{
         var sentButton = UIButton()
         if withimageNamed == "" {
