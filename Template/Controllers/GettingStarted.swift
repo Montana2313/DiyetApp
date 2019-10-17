@@ -40,6 +40,12 @@ class GettingStarted: UIViewController {
         self.view.backgroundColor = .black
         setupViews()
         setupFrameWithPhone(withdeviceName: getDeviceModel())
+        setUserDefaultsString(withValue: returnCurrentDate(), forKey: "currentDate")
+        print("Date has been saved")
+        if getDataStatus() == false {
+            SetAndGetFiles.referance.setAllFoods()
+            print("Bitti")
+        }
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(GettingStarted.swipeLeft(gesture:)))
         swipeRight.direction = .left
         self.view.addGestureRecognizer(swipeRight)

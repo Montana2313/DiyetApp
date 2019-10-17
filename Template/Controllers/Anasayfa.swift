@@ -18,7 +18,8 @@ class Anasayfa: AppBar {
     private var middleKaloriView = UIView()
     private var insideKaloriView = UIView()
     private var calLabel = UILabel()
-    private var foodArrays = [String]() // şimdilik böyle ilerde kaloriler ile birlikte görüncek şekilde olacak
+    private var foodArrays = [String]()
+    private var AllFoods = [Food]()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = masterColor
@@ -31,13 +32,14 @@ class Anasayfa: AppBar {
         self.calLabel.text = "\(String(describing: getCurrentCal()!))cal/\(gettotalCal())cal"
         self.foodArrays.removeAll(keepingCapacity: true)
         if SetAndGetFiles.referance.getcurrentFoods() != nil{
-                  self.foodArrays = SetAndGetFiles.referance.getcurrentFoods()!
+                  self.AllFoods = SetAndGetFiles.referance.getcurrentFoods()!
+                    for item in self.AllFoods{
+                        self.foodArrays.append(item.foodName!)
+                    }
                   self.tableView.reloadData()
         }
         self.calcMiddView(totalCal: gettotalCal(), currentCal: getCurrentCal()!)
-//        removeUserDefaultString(forkey: "userFoods")
-//        removeUserDefaultString(forkey: "currentCal")
-    }
+  }
     private func calcMiddView(totalCal:Int,currentCal:Int){
         var percentage = (currentCal * 100) / totalCal
         var percWith:Double = 0.0
@@ -63,6 +65,7 @@ class Anasayfa: AppBar {
                     self.calcMiddView(totalCal: gettotalCal(), currentCal: getCurrentCal()!)
                     self.calLabel.text = "\(String(describing: getCurrentCal()!))cal/\(gettotalCal())cal"
                     self.foodArrays.append(selected)
+                    self.AllFoods.append(food!)
                     self.tableView.reloadData()
                 }
             }
@@ -229,4 +232,25 @@ extension Anasayfa:UITableViewDelegate ,UITableViewDataSource{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100.0
     }
+   func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+       let contextItem = UIContextualAction(style: .destructive, title: "Sil") {  (contextualAction, view, boolValue) in
+            if getCurrentCal() != nil {
+                var currentCal = getCurrentCal()
+                var currentFoods = getUserFoods()
+                currentFoods!.remove(at: indexPath.row)
+                currentCal! -= Int(self.AllFoods[indexPath.row].cal)
+                setUserDefaultsInt(withValue:currentCal! , forKey: "currentCal")
+                self.calLabel.text = "\(String(describing: getCurrentCal()!))cal/\(gettotalCal())cal"
+                self.foodArrays.remove(at: indexPath.row)
+                self.AllFoods.remove(at: indexPath.row)
+                self.tableView.reloadData()
+                setUserDefaultsAny(any:currentFoods!, forkey: "userFoods")
+                self.calcMiddView(totalCal: gettotalCal(), currentCal: getCurrentCal()!)
+             }
+       }
+       let swipeActions = UISwipeActionsConfiguration(actions: [contextItem])
+
+       return swipeActions
+   }
+    
 }

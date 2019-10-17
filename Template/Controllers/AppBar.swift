@@ -18,6 +18,13 @@ class AppBar: UIViewController {
         }()
         self.view.addSubview(self.appBar)
 //        SetAndGetFiles.referance.setObject(foodName: "Beyaz Et", cal: 300.0)
-        returnCurrentDate()
+        
+        if compareDates() == false {
+                  print("Tarih geçerli")
+        }else {
+            print("Tarih geçerli değil veriler siliniyor...")
+            removeUserDefaultString(forkey: "userFoods")
+            removeUserDefaultString(forkey: "currentCal")
+        }
     }
 }

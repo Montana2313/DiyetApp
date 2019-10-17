@@ -79,6 +79,7 @@ extension Foods:UITableViewDelegate,UITableViewDataSource{
         if self.foodarray.count > 0 {
             guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as? addFoodCell else {fatalError("error")}
             cell.backgroundColor = .clear
+            cell.isUserInteractionEnabled = true
             cell.foodName.text = "\(String(describing: self.foodarray[indexPath.row].foodName!)) -- \(self.foodarray[indexPath.row].cal) cal"
             cell.setterId(id: self.foodarray[indexPath.row].id ?? "")
             cell.setterCal(cal: self.foodarray[indexPath.row].cal)
@@ -90,6 +91,7 @@ extension Foods:UITableViewDelegate,UITableViewDataSource{
         cell.textLabel?.textAlignment = .center
         cell.textLabel?.textColor = .black
         cell.backgroundColor = .clear
+        cell.isUserInteractionEnabled = false
         return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

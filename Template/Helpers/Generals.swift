@@ -54,15 +54,24 @@ func getSaveCurrentData()->String{
     }
     return ""
 }
-func setUserDefaultsAny(any:Any,forkey:String){
-    UserDefaults.standard.setValue(any, forKey: forkey)
-    UserDefaults.standard.synchronize()
+func getSaveCurrentDate()->String{
+    if let date = UserDefaults.standard.string(forKey: "currentDate"){
+        return date
+    }
+    return ""
 }
 func gettotalCal()->Int {
     return UserDefaults.standard.integer(forKey: "totalcal")
 }
 func getCurrentCal()->Int?{
     return UserDefaults.standard.integer(forKey: "currentCal")
+}
+func getDataStatus()->Bool{
+    return UserDefaults.standard.bool(forKey: "dataStatus")
+}
+func setUserDefaultsAny(any:Any,forkey:String){
+    UserDefaults.standard.setValue(any, forKey: forkey)
+    UserDefaults.standard.synchronize()
 }
 func setUserDefaultsString(withValue:String,forKey:String){
     UserDefaults.standard.setValue(withValue, forKey: forKey)
@@ -82,12 +91,23 @@ func createDefaultAlert(withTitle:String , andDesc:String , andButtonTitle:Strin
     alertController.addAction(actionButton)
     return alertController
 }
-func returnCurrentDate(){
+func returnCurrentDate()->String{
     let currentDate = Date()
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "dd/MM/yyyy"
-    print(dateFormatter.string(from: currentDate))
-    //Saate göre veri silmesi yapacak
+    return dateFormatter.string(from: currentDate)
+}
+func compareDates()->Bool{
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "dd/MM/yyyy"
+    let currentDatewithFormat = dateFormatter.date(from: dateFormatter.string(from: Date()))
+    if getSaveCurrentDate() != ""{
+        if dateFormatter.date(from: getSaveCurrentDate())! < currentDatewithFormat!
+        {
+            return true
+        }
+    }
+    return false
 }
 //PROTOKOLLER
 protocol CreateView {
