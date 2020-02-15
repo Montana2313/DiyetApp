@@ -69,6 +69,14 @@ class SetAndGetFiles {
         setObject(foodName: "İmam bayıldı", cal: 164)
         setObject(foodName: "Pide", cal: 600)
         setObject(foodName: "Ton Balığı", cal: 186)
+        setObject(foodName: "Magnolia", cal: 746)
+        setObject(foodName: "Fıstık Ezmesi", cal: 500)
+        setObject(foodName: "Yoğurt Çorbası", cal: 75)
+        setObject(foodName: "Bezelye Yemeği", cal: 404)
+        setObject(foodName: "Bezelyeli Pilav", cal: 217)
+        setObject(foodName: "Hamburger", cal: 313)
+        setObject(foodName: "Sosisli Börek", cal: 93)
+        setObject(foodName: "Dana Sosis", cal: 60)
     }
     private func saveItems(){
         do {

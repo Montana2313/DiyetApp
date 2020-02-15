@@ -351,7 +351,7 @@ extension GettingStarted:SetUpViews{
         self.boySlider.frame = CGRect(x: 20, y: 170, width: self.second.frame.size.width - 40, height: 40)
         self.kiloLabel.frame = CGRect(x: 20, y: 220, width: self.second.frame.size.width - 40, height: 40)
         self.kiloSlider.frame = CGRect(x: 20, y: 270, width: self.second.frame.size.width - 40, height: 40)
-        self.doneButton.frame = CGRect(x: 20, y: self.second.frame.size.height - 100, width: self.second.frame.size.width - 40, height: 50)
+        self.doneButton.frame = CGRect(x: 20, y: self.second.frame.size.height - 60, width: self.second.frame.size.width - 40, height: 50)
         
         
         CustomizeItems.referance.roundedButton25(with: self.maleButton)

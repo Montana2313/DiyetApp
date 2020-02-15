@@ -14,6 +14,7 @@
 		0453729023550036000CDF61 /* GettingStarted.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0453728F23550036000CDF61 /* GettingStarted.swift */; };
 		0470618A23566B1E002A6385 /* addFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0470618923566B1E002A6385 /* addFoodCell.swift */; };
 		04781DB82357670F001B46F2 /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 04781DB62357670F001B46F2 /* DataModel.xcdatamodeld */; };
+		04967AC6235C89FC003C593D /* logoclear.png in Resources */ = {isa = PBXBuildFile; fileRef = 04967AC5235C89FC003C593D /* logoclear.png */; };
 		04DE04402340C34200708D66 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DE043F2340C34200708D66 /* AppDelegate.swift */; };
 		04DE04442340C34200708D66 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DE04432340C34200708D66 /* ViewController.swift */; };
 		04DE04492340C34400708D66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DE04482340C34400708D66 /* Assets.xcassets */; };
@@ -36,6 +37,7 @@
 		0453728F23550036000CDF61 /* GettingStarted.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GettingStarted.swift; sourceTree = "<group>"; };
 		0470618923566B1E002A6385 /* addFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addFoodCell.swift; sourceTree = "<group>"; };
 		04781DB72357670F001B46F2 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		04967AC5235C89FC003C593D /* logoclear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoclear.png; sourceTree = "<group>"; };
 		04DE043C2340C34200708D66 /* DiyetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiyetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DE043F2340C34200708D66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04DE04432340C34200708D66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		0489BE4D23527DFE0061FB21 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				04967AC5235C89FC003C593D /* logoclear.png */,
 			);
 			path = Images;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			files = (
 				04DE044C2340C34400708D66 /* LaunchScreen.storyboard in Resources */,
 				04DE04492340C34400708D66 /* Assets.xcassets in Resources */,
+				04967AC6235C89FC003C593D /* logoclear.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

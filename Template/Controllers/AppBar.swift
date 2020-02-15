@@ -13,7 +13,7 @@ class AppBar: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.appBar = {
-            let view = DefaultItems.referance.defAppBar(withColor: appBarColor, andText: "Günlük", labelcolor: .white)
+            let view = DefaultItems.referance.defAppBar(withColor: appBarColor, andText: "", labelcolor: .white)
             return view
         }()
         self.view.addSubview(self.appBar)

@@ -13,6 +13,7 @@ class Foods: UIViewController {
     private var tableView = UITableView()
     private var selfSearchBar = UISearchBar()
     private var foodarray = [Food]()
+    private var isSeaching:Bool = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = masterColor
@@ -54,6 +55,7 @@ extension Foods:SetUpViews{
 extension Foods:UISearchBarDelegate{
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text!.count > 1 {
+            self.isSeaching = true
             self.foodarray.removeAll(keepingCapacity: false)
             for item in SetAndGetFiles.referance.readObject(){
                 if item.foodName!.contains(searchBar.text!){
@@ -62,8 +64,14 @@ extension Foods:UISearchBarDelegate{
             }
             self.tableView.reloadData()
         }else {
+            self.isSeaching = false
                self.foodarray.removeAll(keepingCapacity: false)
                self.tableView.reloadData()
+        }
+    }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        if scrollView == self.tableView{
+            self.view.endEditing(true)
         }
     }
 }
@@ -76,23 +84,33 @@ extension Foods:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if self.foodarray.count > 0 {
-            guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as? addFoodCell else {fatalError("error")}
+        if self.isSeaching == true {
+            if self.foodarray.count > 0 {
+                guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "cell") as? addFoodCell else {fatalError("error")}
+                cell.backgroundColor = .clear
+                cell.isUserInteractionEnabled = true
+                cell.foodName.text = "\(String(describing: self.foodarray[indexPath.row].foodName!)) -- \(self.foodarray[indexPath.row].cal) cal"
+                cell.setterId(id: self.foodarray[indexPath.row].id ?? "")
+                cell.setterCal(cal: self.foodarray[indexPath.row].cal)
+                cell.textLabel?.text = "cell"
+                return cell
+            }
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "Bulunamadı"
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.textColor = .black
             cell.backgroundColor = .clear
-            cell.isUserInteractionEnabled = true
-            cell.foodName.text = "\(String(describing: self.foodarray[indexPath.row].foodName!)) -- \(self.foodarray[indexPath.row].cal) cal"
-            cell.setterId(id: self.foodarray[indexPath.row].id ?? "")
-            cell.setterCal(cal: self.foodarray[indexPath.row].cal)
-            cell.textLabel?.text = "cell"
+            cell.isUserInteractionEnabled = false
+            return cell
+        }else {
+            let cell = UITableViewCell()
+            cell.textLabel?.text = "Arama yaparak başla"
+            cell.textLabel?.textAlignment = .center
+            cell.textLabel?.textColor = .black
+            cell.backgroundColor = .clear
+            cell.isUserInteractionEnabled = false
             return cell
         }
-        let cell = UITableViewCell()
-        cell.textLabel?.text = "Arama yaparak başla"
-        cell.textLabel?.textAlignment = .center
-        cell.textLabel?.textColor = .black
-        cell.backgroundColor = .clear
-        cell.isUserInteractionEnabled = false
-        return cell
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.tableView.deselectRow(at: indexPath, animated: true)

@@ -14,12 +14,14 @@ class Anasayfa: AppBar {
     private var middleView = UIView()
     private var leftButton = UIButton()
     private var rightButton = UIButton()
+    private var middleButton = UIButton()
     private var tableView = UITableView()
     private var middleKaloriView = UIView()
     private var insideKaloriView = UIView()
     private var calLabel = UILabel()
     private var foodArrays = [String]()
     private var AllFoods = [Food]()
+    private var compLogo = UIImageView()
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = masterColor
@@ -99,11 +101,36 @@ class Anasayfa: AppBar {
     @objc func takeAPhoto(){
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.sourceType = .photoLibrary
+        picker.sourceType = .camera
         self.present(picker,animated: true,completion: nil)
     }
     @objc func foods(){
         self.navigationController?.pushViewController(Foods(), animated: true)
+    }
+    @objc func setAnotherFoodTapped(){
+        let alert = UIAlertController(title: "Bilgi", message: "Bulamadığınız yemeği ekleyin", preferredStyle: .alert)
+        alert.addTextField { (foodName) in
+            foodName.attributedPlaceholder = NSAttributedString(string: "Yiyecek adı",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+        }
+        alert.addTextField { (foodCal) in
+            foodCal.attributedPlaceholder = NSAttributedString(string: "Kalori",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+            foodCal.keyboardType = .numberPad
+        }
+        let action = UIAlertAction(title: "Ekle", style: .default) { (action) in
+            if let txtFields = alert.textFields{
+                let Foodname:String = txtFields[0].text ?? ""
+                let cal:String = txtFields[1].text ?? ""
+                let doubleCal:Double = Double(cal) ?? 0.0
+                SetAndGetFiles.referance.setObject(foodName: Foodname, cal: doubleCal)
+            }
+        }
+        let cancelButton  = UIAlertAction(title: "İptal", style:.cancel , handler: nil)
+    
+        alert.addAction(action)
+        alert.addAction(cancelButton)
+        self.present(alert,animated:true,completion: nil)
     }
 }
 extension Anasayfa:SetUpViews{
@@ -120,6 +147,11 @@ extension Anasayfa:SetUpViews{
         self.rightButton = {
             let button = DefaultItems.referance.defButton(withText: "Yemekler", andButtonColor: anaViewColor)
             button.addTarget(self, action: #selector(Anasayfa.foods), for: .touchUpInside)
+            return button
+        }()
+        self.middleButton = {
+            let button = DefaultItems.referance.defButton(withText: "Ekle", andButtonColor: anaViewColor)
+            button.addTarget(self, action: #selector(Anasayfa.setAnotherFoodTapped), for: .touchUpInside)
             return button
         }()
         self.tableView = {
@@ -142,8 +174,17 @@ extension Anasayfa:SetUpViews{
             label.font = UIFont(name: "Helvetica", size: 25.0)
             return label
         }()
+        self.compLogo = {
+            let imageview = UIImageView()
+            imageview.image = UIImage(named: "logoclear.png")
+            return imageview
+        }()
+        
+        
+        self.view.addSubview(self.middleButton)
         CustomizeItems.referance.customAppBarButtons(with: self.leftButton, andRigth: self.rightButton, currentView:self.appBar)
         self.middleKaloriView.addSubview(self.insideKaloriView)
+        self.middleView.addSubview(self.compLogo)
         self.middleView.addSubview(middleKaloriView)
         self.middleView.addSubview(self.calLabel)
         self.view.addSubview(self.middleView)
@@ -151,10 +192,13 @@ extension Anasayfa:SetUpViews{
     }
     func setupFrameWithPhone(withdeviceName: PhoneType) {
         self.middleView.frame = CGRect(x: 10, y: 100, width: screenWith - 20, height: screenHeigth - 500)
+        self.compLogo.frame = CGRect(x: self.middleView.frame.size.width - 110, y: self.middleView.frame.size.height - 60, width: 150, height: 75)
         self.tableView.frame = CGRect(x: 10, y: screenHeigth - 390, width: screenWith - 20, height: screenHeigth - (screenHeigth - 390))
         self.middleKaloriView.frame = CGRect(x: 20, y: (self.middleView.frame.size.height / 2) - 50, width: self.middleView.frame.size.width - 40, height: 50)
         self.insideKaloriView.frame = CGRect(x: 0, y: 0, width: 20, height: self.middleKaloriView.frame.size.height)
         self.calLabel.frame = CGRect(x: 10, y: (self.middleView.frame.size.height / 2) + 10, width:self.middleView.frame.width - 20, height: 50)
+        
+        self.middleButton.frame = CGRect(x: (self.view.frame.size.width / 2 ) - 50, y: 35, width: 100, height: 40)
         CustomizeItems.referance.roundedView25(with: self.middleView)
     }
     private func findBestfood(image : CIImage,process:@escaping(String,String,Bool)->Void){
@@ -167,9 +211,12 @@ extension Anasayfa:SetUpViews{
                         let conf = (itemFirst.confidence) * 100
                         let rounded = Int(conf * 100) / 100
                         if rounded > 90 {
+                            print(itemFirst.identifier)
                             process(itemFirst.identifier,"",false)
                         }else {
                             let itemSecond = results[1]
+                            print(itemFirst.identifier)
+                            print(itemSecond.identifier)
                             process(itemFirst.identifier,itemSecond.identifier,true)
                         }
                     }
@@ -192,6 +239,9 @@ extension Anasayfa:SetUpViews{
 extension Anasayfa:UIImagePickerControllerDelegate,UINavigationControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.originalImage] as? UIImage else {fatalError("error")}
+        self.dismiss(animated: true) {
+            
+        }
         self.dismiss(animated: true) {
             // image recognaizer
             if let ciimage = CIImage(image: selectedImage){
