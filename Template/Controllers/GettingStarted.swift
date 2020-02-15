@@ -46,11 +46,15 @@ class GettingStarted: UIViewController {
             SetAndGetFiles.referance.setAllFoods()
             print("Bitti")
         }
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(GettingStarted.swipeLeft(gesture:)))
-        swipeRight.direction = .left
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(GettingStarted.swipeLeft))
+        swipeLeft.direction = .left
+        self.view.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(GettingStarted.swipRight))
+        swipeRight.direction = .right
         self.view.addGestureRecognizer(swipeRight)
     }
-    @objc func swipeLeft(gesture: UIGestureRecognizer){
+     @objc func swipeLeft(){
         if selectedsportType != nil || selectedgenderType != nil{
             UIView.animate(withDuration: 1.0) {
                 self.first.frame = CGRect(x:-1*(screenWith  + 40), y: 150, width: screenWith - 40, height: screenHeigth - 300)
@@ -60,6 +64,16 @@ class GettingStarted: UIViewController {
             }
         }
     }
+    @objc func swipRight(){
+        UIView.animate(withDuration: 1.0) {
+            self.first.frame = CGRect(x: 20, y: 150, width: screenWith - 40, height: screenHeigth - 300)
+//            self.first.frame = CGRect(x:-1*(screenWith  + 40), y: 150, width: screenWith - 40, height: screenHeigth - 300)
+        }
+        UIView.animate(withDuration: 1.0) {
+            self.second.frame = CGRect(x: screenWith + (screenWith - 40), y: 150, width: screenWith - 40, height: screenHeigth - 300)
+        }
+           
+       }
     @objc func genderButton(button:UIButton){
         if button.tag == 1{
             selectedgenderType = .Male
@@ -78,7 +92,9 @@ class GettingStarted: UIViewController {
                 self.maleButton.setTitleColor(.black, for: .normal)
             }
         }
-        
+        if self.selectedsportType != nil {
+            self.swipeLeft()
+        }
         print(selectedgenderType as Any)
     }
     @objc func sportButton(button:UIButton){
@@ -153,7 +169,9 @@ class GettingStarted: UIViewController {
                 self.highButton.setTitleColor(.black, for: .normal)
             }
         }
-        
+        if self.selectedgenderType != nil {
+            self.swipeLeft()
+        }
         print(selectedsportType as Any)
     }
     @objc func sliderchanged(slider:UISlider){

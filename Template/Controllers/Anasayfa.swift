@@ -101,7 +101,9 @@ class Anasayfa: AppBar {
     @objc func takeAPhoto(){
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.sourceType = .camera
+        picker.sourceType = .photoLibrary
+//        picker.sourceType = .camera
+        picker.allowsEditing = false
         self.present(picker,animated: true,completion: nil)
     }
     @objc func foods(){
@@ -110,12 +112,22 @@ class Anasayfa: AppBar {
     @objc func setAnotherFoodTapped(){
         let alert = UIAlertController(title: "Bilgi", message: "Bulamadığınız yemeği ekleyin", preferredStyle: .alert)
         alert.addTextField { (foodName) in
-            foodName.attributedPlaceholder = NSAttributedString(string: "Yiyecek adı",
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+            if self.traitCollection.userInterfaceStyle == .dark{
+                foodName.attributedPlaceholder = NSAttributedString(string: "Yiyecek adı",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+            }else {
+                foodName.attributedPlaceholder = NSAttributedString(string: "Yiyecek adı",
+                attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+            }
         }
         alert.addTextField { (foodCal) in
+            if self.traitCollection.userInterfaceStyle == .dark{
+            foodCal.attributedPlaceholder = NSAttributedString(string: "Kalori",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.white])
+            }else {
             foodCal.attributedPlaceholder = NSAttributedString(string: "Kalori",
             attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
+            }
             foodCal.keyboardType = .numberPad
         }
         let action = UIAlertAction(title: "Ekle", style: .default) { (action) in
@@ -123,7 +135,19 @@ class Anasayfa: AppBar {
                 let Foodname:String = txtFields[0].text ?? ""
                 let cal:String = txtFields[1].text ?? ""
                 let doubleCal:Double = Double(cal) ?? 0.0
-                SetAndGetFiles.referance.setObject(foodName: Foodname, cal: doubleCal)
+                if Foodname != "" && doubleCal != 0.0 {
+                    SetAndGetFiles.referance.setObject(foodName: Foodname, cal: doubleCal)
+                    if let foodObject = SetAndGetFiles.referance.getobject(withName: Foodname){
+                        self.setuserFood(foodId: foodObject.id!) {
+                            self.setuserCal(cal: Int(foodObject.cal))
+                            self.calcMiddView(totalCal: gettotalCal(), currentCal: getCurrentCal()!)
+                            self.calLabel.text = "\(String(describing: getCurrentCal()!))cal/\(gettotalCal())cal"
+                            self.foodArrays.append(foodObject.foodName!)
+                            self.AllFoods.append(foodObject)
+                            self.tableView.reloadData()
+                        }
+                    }
+                }
             }
         }
         let cancelButton  = UIAlertAction(title: "İptal", style:.cancel , handler: nil)
@@ -192,7 +216,7 @@ extension Anasayfa:SetUpViews{
     }
     func setupFrameWithPhone(withdeviceName: PhoneType) {
         self.middleView.frame = CGRect(x: 10, y: 100, width: screenWith - 20, height: screenHeigth - 500)
-        self.compLogo.frame = CGRect(x: self.middleView.frame.size.width - 110, y: self.middleView.frame.size.height - 60, width: 150, height: 75)
+        self.compLogo.frame = CGRect(x: self.middleView.frame.size.width - 100, y: self.middleView.frame.size.height - 60, width: 110, height: 70)
         self.tableView.frame = CGRect(x: 10, y: screenHeigth - 390, width: screenWith - 20, height: screenHeigth - (screenHeigth - 390))
         self.middleKaloriView.frame = CGRect(x: 20, y: (self.middleView.frame.size.height / 2) - 50, width: self.middleView.frame.size.width - 40, height: 50)
         self.insideKaloriView.frame = CGRect(x: 0, y: 0, width: 20, height: self.middleKaloriView.frame.size.height)

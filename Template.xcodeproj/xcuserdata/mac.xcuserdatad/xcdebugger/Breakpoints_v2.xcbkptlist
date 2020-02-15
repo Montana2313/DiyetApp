@@ -14,9 +14,9 @@
             filePath = "Template/Controllers/Anasayfa.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "204"
-            endingLineNumber = "204"
-            landmarkName = "findBestfood(image:process:)"
+            startingLineNumber = "218"
+            endingLineNumber = "218"
+            landmarkName = "setupFrameWithPhone(withdeviceName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -30,9 +30,9 @@
             filePath = "Template/Controllers/Anasayfa.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "207"
-            endingLineNumber = "207"
-            landmarkName = "findBestfood(image:process:)"
+            startingLineNumber = "221"
+            endingLineNumber = "221"
+            landmarkName = "setupFrameWithPhone(withdeviceName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -46,9 +46,9 @@
             filePath = "Template/Controllers/Anasayfa.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "205"
-            endingLineNumber = "205"
-            landmarkName = "findBestfood(image:process:)"
+            startingLineNumber = "219"
+            endingLineNumber = "219"
+            landmarkName = "setupFrameWithPhone(withdeviceName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -62,9 +62,9 @@
             filePath = "Template/Controllers/Anasayfa.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "206"
-            endingLineNumber = "206"
-            landmarkName = "findBestfood(image:process:)"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
+            landmarkName = "setupFrameWithPhone(withdeviceName:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -248,7 +248,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "50AD100A-78AA-4FDC-92FF-C4D035C6C6C6"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Template/Controllers/Anasayfa.swift"
@@ -264,7 +264,7 @@
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
             uuid = "CC7FABC3-782C-4BDC-95FD-A6C4F0D4F179"
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Template/Controllers/Anasayfa.swift"

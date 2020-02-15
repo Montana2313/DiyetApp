@@ -42,6 +42,7 @@ class addFoodCell:UITableViewCell {
     }
     @objc func addButtonTapped(){
         print(self.foodID)
+        self.addButton.isUserInteractionEnabled = false
         setuserFood {
             setuserCal()
             UIView.animate(withDuration: 2.0) {
@@ -49,6 +50,7 @@ class addFoodCell:UITableViewCell {
                        }
                        UIView.animate(withDuration: 2.0) {
                            self.addButton.backgroundColor = insideColor
+                        self.addButton.isUserInteractionEnabled = true 
             }
         }
     }

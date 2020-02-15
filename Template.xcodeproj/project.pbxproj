@@ -38,7 +38,7 @@
 		0470618923566B1E002A6385 /* addFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = addFoodCell.swift; sourceTree = "<group>"; };
 		04781DB72357670F001B46F2 /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
 		04967AC5235C89FC003C593D /* logoclear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logoclear.png; sourceTree = "<group>"; };
-		04DE043C2340C34200708D66 /* DiyetApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiyetApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		04DE043C2340C34200708D66 /* Diyet Takip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Diyet Takip.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DE043F2340C34200708D66 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04DE04432340C34200708D66 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		04DE04482340C34400708D66 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -84,7 +84,7 @@
 		04DE043D2340C34200708D66 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				04DE043C2340C34200708D66 /* DiyetApp.app */,
+				04DE043C2340C34200708D66 /* Diyet Takip.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -174,7 +174,7 @@
 			);
 			name = Template;
 			productName = Template;
-			productReference = 04DE043C2340C34200708D66 /* DiyetApp.app */;
+			productReference = 04DE043C2340C34200708D66 /* Diyet Takip.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -388,7 +388,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = MyTemplate.Template;
-				PRODUCT_NAME = DiyetApp;
+				PRODUCT_NAME = "Diyet Takip";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -406,7 +406,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = MyTemplate.Template;
-				PRODUCT_NAME = DiyetApp;
+				PRODUCT_NAME = "Diyet Takip";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
